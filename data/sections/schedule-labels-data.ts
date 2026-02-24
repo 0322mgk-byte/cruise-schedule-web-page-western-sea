@@ -6,12 +6,12 @@ export const scheduleLabelsData: ScheduleLabels = {
   collapseAll: "모두 접기",
   dayLabel: "일차",
   viewDetails: "상세보기",
-  tourGuidePrefix: "영어 가이드",
+  tourGuidePrefix: "한국어 가이드",
   defaultTouristLocation: "[관광정보]",
   defaultTourLabel: "[기항지 투어]",
   defaultTourSublabel: "추천 선택 관광",
   defaultSeaLabel: "🚢 전일 해상",
-  defaultSeaSublabel: "에메랄드 크루즈",
+  defaultSeaSublabel: "MSC 씨뷰",
   tourNoticeTitle: "💡 기항지 투어 예약 시 유의사항",
   tourCode: "투어 코드",
   expectedDuration: "예상 소요 시간",
@@ -22,6 +22,6 @@ export const scheduleLabelsData: ScheduleLabels = {
 };
 
 export const scheduleMeta = {
-  dateRange: "2026년 8월 3일 — 8월 10일",
-  durationLabel: "8박 10일",
+  dateRange: "2026년 6월 6일 — 6월 15일",
+  durationLabel: "9박 10일",
 };

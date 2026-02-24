@@ -23,8 +23,8 @@ export const pricingData: PricingData = {
   fuelSurchargeText: "유류할증료 123,000원/제세공과금 0원 포함",
   localGuideFee: { amount: 110, currency: "EUR" },
   crewTip: {
-    adult: { amount: 77, currency: "EUR" },
-    child: { amount: 38.5, currency: "EUR" },
+    adult: { amount: 98, currency: "EUR" },
+    child: { amount: 49, currency: "EUR" },
   },
   notices: [
     "유류할증료 123,000원/제세공과금 0원 포함",
@@ -50,7 +50,7 @@ export const pricingData: PricingData = {
     {
       title: "경비 및 팁(Tip) 안내",
       items: [
-        "선내 승무원 경비(필수): 성인 77유로 / 소아 38.5유로",
+        "선내 승무원 경비(필수): 성인 98유로 / 소아 49유로",
         "현지 진행비(인솔자/기사/가이드): 110유로",
         "매너 팁: 자율적 의사로 지불하며, 미지급에 따른 불이익은 전혀 없습니다.",
       ],

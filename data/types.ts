@@ -199,7 +199,7 @@ export interface HeroData {
   description: string;
   mobileDescription?: string;
   videoSources: { src: string; type: string }[];
-  mobileVideoSrc?: string;
+  mobileVideoSources?: { src: string; type: string }[];
   posterImage?: string;
 }
 
@@ -283,11 +283,13 @@ export interface ShipSpec {
 export interface DetailsData {
   title: string;
   specs: ShipSpec[];
-  youtube: {
+  youtube?: {
     videoId: string;
     startSeconds: number;
     endSeconds: number;
   };
+  videoSources?: { src: string; type: string }[];
+  mobileVideoSources?: { src: string; type: string }[];
 }
 
 

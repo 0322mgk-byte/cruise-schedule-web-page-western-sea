@@ -1,74 +1,10 @@
 "use client";
 
-declare global {
-    interface Window {
-        onYouTubeIframeAPIReady?: (() => void) | undefined;
-    }
-}
-
-import { useEffect, useRef } from "react";
 import { cruiseData } from "@/data/cruise-data";
 
 export default function Details() {
-    const { title, specs, youtube } = cruiseData.details;
-    const playerRef = useRef<YT.Player | null>(null);
+    const { title, specs, youtube, videoSources, mobileVideoSources } = cruiseData.details;
 
-    useEffect(() => {
-        const initPlayer = () => {
-            new window.YT.Player("details-yt-player", {
-                width: "100%",
-                height: "100%",
-                videoId: youtube.videoId,
-                playerVars: {
-                    autoplay: 1,
-                    mute: 1,
-                    controls: 0,
-                    showinfo: 0,
-                    rel: 0,
-                    modestbranding: 1,
-                    playsinline: 1,
-                    start: youtube.startSeconds,
-                    end: youtube.endSeconds,
-                    disablekb: 1,
-                    fs: 0,
-                    iv_load_policy: 3,
-                },
-                events: {
-                    onReady: (event: YT.PlayerEvent) => {
-                        playerRef.current = event.target as unknown as YT.Player;
-                        (event.target as any).setPlaybackRate(1.25);
-                        event.target.playVideo();
-                    },
-                    onStateChange: (event: YT.OnStateChangeEvent) => {
-                        if (event.data === YT.PlayerState.ENDED) {
-                            playerRef.current?.seekTo(youtube.startSeconds, true);
-                            playerRef.current?.playVideo();
-                        }
-                    },
-                },
-            });
-        };
-
-        if (window.YT && window.YT.Player) {
-            initPlayer();
-        } else {
-            const prev = window.onYouTubeIframeAPIReady;
-            window.onYouTubeIframeAPIReady = () => {
-                prev?.();
-                initPlayer();
-            };
-            if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
-                const tag = document.createElement("script");
-                tag.src = "https://www.youtube.com/iframe_api";
-                document.head.appendChild(tag);
-            }
-        }
-
-        return () => {
-            playerRef.current?.destroy();
-            playerRef.current = null;
-        };
-    }, []);
     return (
         <>
             {/* Section 5 */}
@@ -101,7 +37,42 @@ export default function Details() {
 
                         <div className="order-1 md:order-none relative">
                             <div className="overflow-hidden shadow-md md:shadow-2xl md:border md:border-gray-200 bg-gray-100 aspect-video relative">
-                                <div id="details-yt-player" className="absolute inset-0 w-full h-full" />
+                                {mobileVideoSources && (
+                                    <video
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        className="absolute inset-0 w-full h-full object-cover md:hidden"
+                                    >
+                                        {mobileVideoSources.map((source) => (
+                                            <source key={source.src} src={source.src} type={source.type} />
+                                        ))}
+                                    </video>
+                                )}
+                                {videoSources && (
+                                    <video
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        className="absolute inset-0 w-full h-full object-cover hidden md:block"
+                                    >
+                                        {videoSources.map((source) => (
+                                            <source key={source.src} src={source.src} type={source.type} />
+                                        ))}
+                                    </video>
+                                )}
+                                {youtube && !videoSources && !mobileVideoSources && (
+                                    <iframe
+                                        className="absolute inset-0 w-full h-full"
+                                        src={`https://www.youtube.com/embed/${youtube.videoId}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&start=${youtube.startSeconds}&end=${youtube.endSeconds}&disablekb=1&fs=0&iv_load_policy=3&loop=1&playlist=${youtube.videoId}`}
+                                        title="YouTube video player"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                )}
                             </div>
                         </div>
                     </div>

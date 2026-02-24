@@ -18,7 +18,18 @@
       "Bash(head:*)",
       "mcp__sequential-thinking__sequentialthinking",
       "Bash(curl:*)",
-      "Bash(cd C:/AI_Project/cruise-schedule-web-page && npx tsc --noEmit 2>&1)"
+      "Bash(cd C:/AI_Project/cruise-schedule-web-page && npx tsc --noEmit 2>&1)",
+      "Bash(cd /c/AI_Project/cruise-schedule-web-page-western-sea && ./node_modules/.bin/tsc --noEmit 2>&1)",
+      "Bash(cd /c/AI_Project/cruise-schedule-web-page-western-sea && node_modules/.bin/tsc --noEmit 2>&1)",
+      "Bash(cd /c/AI_Project/cruise-schedule-web-page-western-sea && node_modules/.bin/next build 2>&1)",
+      "Bash(cd \"C:/AI_Project/cruise-schedule-web-page-western-sea\" && ffprobe -v error -show_streams -select_streams v:0 \"public/hero-video/mobile_hero.mp4\" 2>&1)",
+      "Bash(cd \"C:/AI_Project/cruise-schedule-web-page-western-sea\" && ffprobe -v error -show_streams -select_streams v:0 \"public/hero-video/mobile_hero.webm\" 2>&1)",
+      "Bash(cd \"C:/AI_Project/cruise-schedule-web-page-western-sea\" && ffprobe -v error -show_streams -select_streams v:0 \"public/section5/mobile-cruise-specifications.mp4\" 2>&1)",
+      "Bash(cd \"C:/AI_Project/cruise-schedule-web-page-western-sea\" && ffprobe -v error -show_streams -select_streams v:0 \"public/section5/mobile-cruise-specifications.webm\" 2>&1)",
+      "Bash(cd:*)",
+      "Bash(cd \"C:/AI_Project/cruise-schedule-web-page-western-sea\" && ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,profile,pix_fmt,bits_per_raw_sample,width,height,r_frame_rate,duration \"public/hero-video/hero.mxf\" 2>&1)",
+      "Bash(cd \"C:/AI_Project/cruise-schedule-web-page-western-sea\" && ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,profile,pix_fmt,bits_per_raw_sample,width,height,r_frame_rate,duration \"public/section5/cruise-specifications.mxf\" 2>&1)",
+      "Bash(tail:*)"
     ]
   }
 }

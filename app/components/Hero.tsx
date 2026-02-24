@@ -4,7 +4,7 @@ import Link from "next/link";
 import { cruiseData } from "@/data/cruise-data";
 
 export default function Hero() {
-    const { ctaText, cruiseLine, departureDate, duration, description, mobileDescription, videoSources, mobileVideoSrc } = cruiseData.hero;
+    const { ctaText, cruiseLine, departureDate, duration, description, mobileDescription, videoSources, mobileVideoSources } = cruiseData.hero;
 
     return (
         <div id="hero">
@@ -31,16 +31,20 @@ export default function Hero() {
                             playsInline
                             className="absolute inset-0 w-full h-full object-cover"
                         >
-                            <source src={mobileVideoSrc || videoSources[videoSources.length - 1]?.src} type="video/mp4" />
+                            {mobileVideoSources ? mobileVideoSources.map((source) => (
+                                <source key={source.src} src={source.src} type={source.type} />
+                            )) : (
+                                <source src={videoSources[videoSources.length - 1]?.src} type="video/mp4" />
+                            )}
                         </video>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Desktop Hero */}
-            <section className="hidden md:flex relative min-h-svh items-center overflow-hidden bg-gray-900 pt-20">
+            < section className="hidden md:flex relative min-h-svh items-center overflow-hidden bg-gray-900 pt-20" >
                 {/* Video Background */}
-                <div className="absolute inset-0 z-0 pointer-events-none">
+                < div className="absolute inset-0 z-0 pointer-events-none" >
                     <div className="absolute inset-0 bg-black/60 z-10" />
                     <video
                         autoPlay
@@ -53,7 +57,7 @@ export default function Hero() {
                             <source key={source.src} src={source.src} type={source.type} />
                         ))}
                     </video>
-                </div>
+                </div >
 
                 <div className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-10 text-left">
                     <span className="text-2xl font-normal tracking-widest uppercase text-white"
@@ -86,7 +90,7 @@ export default function Hero() {
                         <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 }
